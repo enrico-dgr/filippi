@@ -1,10 +1,11 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Canvas, useFrame } from "@react-three/fiber";
+import { Mesh } from "three";
 
 function Box(props) {
   // This reference will give us direct access to the mesh
-  const mesh = useRef();
+  const mesh = useRef<Mesh>();
 
   // Set up state for the hovered and active state
   const [hovered, setHover] = useState(false);
