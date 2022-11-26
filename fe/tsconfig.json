@@ -1,0 +1,22 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"common-builders/*": ["common/builders/*"],
+			"common-entities/*": ["common/entities/*"],
+			"common-systems/*": ["common/systems/*"],
+			"common-types/*": ["common/types/*"],
+			"fe-controllers/*": ["src/components/controllers/*"],
+			"fe-entities/*": ["src/components/entities/*"],
+			"fe-gui/*": ["src/components/gui/*"],
+			"fe-systems/*": ["src/components/systems/*"],
+			"fe-screens/*": ["src/screens/*"],
+			"fe-types/*": ["src/types/*"],
+			"fe-utils/*": ["src/utils/*"],
+			"fe-assets/*": ["assets/*"]
+		},
+		"noUnusedLocals": true,
+		"noUnusedParameters": true
+	},
+	"extends": "expo/tsconfig.base"
+}
