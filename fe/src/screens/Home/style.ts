@@ -5,14 +5,15 @@ export default StyleSheet.create({
 		height: '100%',
 		flexDirection: 'column',
 	},
-	play: {
+	buttonsContainer: {
+		flexDirection: 'column',
 		position: 'absolute',
-		bottom: 25,
-		right: 33,
+		bottom: 20,
+		right: -30,
 	},
-	book: {
-		position: 'absolute',
-		bottom: 25,
-		left: 33,
+	button: {
+		marginTop: 10,
+		height: 60,
+		width: 145,
 	},
 });

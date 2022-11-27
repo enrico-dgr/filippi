@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "Filippi",
+    "slug": "filippi",
+    "version": "1.0.0",
+    "orientation": "landscape",
+    "icon": "./assets/bald-57x70.png",
+    "splash": {
+      "image": "./assets/bald-57x70.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/bald-57x70.png",
+        "backgroundColor": "#000000"
+      }
+    },
+    "web": {
+      "favicon": "./assets/bald-57x70.png"
+    }
+  }
+}

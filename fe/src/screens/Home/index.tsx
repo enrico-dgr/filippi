@@ -18,8 +18,10 @@ const Home = () => {
 			<View style={style.container}>
 				<Settings />
 				<Username />
-				<ButtonBig text="Book" style={style.book} />
-				<ButtonBig text="Play" style={style.play} />
+				<View style={style.buttonsContainer}>
+					<ButtonBig text="Book" style={style.button} />
+					<ButtonBig text="Play" style={style.button} />
+				</View>
 			</View>
 		</LinearGradient>
 	);

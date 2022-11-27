@@ -22,15 +22,13 @@ const ButtonBig = ({ style: containerStyle, text }: Props) => {
 		<Pressable
 			onPressIn={onPressIn}
 			onPressOut={onPressOut}
-			style={containerStyle}
+			style={{
+				...style.textContainer,
+				...containerStyle,
+				...(state.isPressed ? style.textContainerPressed : {}),
+			}}
 		>
-			<Text
-				selectable={false}
-				style={{
-					...style.text,
-					...(state.isPressed ? style.textPressed : {}),
-				}}
-			>
+			<Text selectable={false} style={style.text}>
 				{text}
 			</Text>
 		</Pressable>
