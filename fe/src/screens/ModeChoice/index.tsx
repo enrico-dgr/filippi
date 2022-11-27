@@ -2,8 +2,9 @@ import React from 'react';
 import { useNavigate } from 'react-router-native';
 import style from './style';
 import ButtonBig from 'fe-gui/ButtonBig';
-import Card from 'fe-gui/Card';
 import routes from 'fe-utils/routes';
+import { ScrollView } from 'react-native';
+import GameMode from './GameMode';
 
 const ModeChoice = () => {
 	const navigate = useNavigate();
@@ -11,7 +12,17 @@ const ModeChoice = () => {
 
 	return (
 		<>
-			<Card></Card>
+			<ScrollView
+				horizontal
+				contentContainerStyle={style.scrollViewContent}
+				style={style.scrollView}
+				showsHorizontalScrollIndicator={false}
+			>
+				<GameMode />
+				<GameMode />
+				<GameMode />
+				<GameMode />
+			</ScrollView>
 			<ButtonBig
 				onPressOut={onPressOutBack}
 				style={style.button}

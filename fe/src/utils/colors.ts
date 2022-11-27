@@ -7,6 +7,7 @@ export const palette = {
 	},
 	'fuchsia-pink': {
 		hex: '#b037b0',
+		getRgba: (alpha?: number) => `rgba(176, 55, 176, ${alpha ?? 1})`,
 	},
 	deco: {
 		hex: '#dddd9b',
