@@ -1,8 +1,13 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-	container: {
-		height: '100%',
+	buttonsContainer: {
 		flexDirection: 'column',
+		position: 'absolute',
+		bottom: 20,
+		right: -30,
+	},
+	button: {
+		marginTop: 10,
 	},
 });

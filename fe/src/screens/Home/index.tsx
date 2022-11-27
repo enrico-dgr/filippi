@@ -5,7 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import Settings from 'fe-gui/Settings';
 import { palette } from 'fe-utils/colors';
 import Username from './Username';
-import ButtonBig from 'fe-gui/ButtonBig';
+import { Outlet } from 'react-router-native';
 
 const Home = () => {
 	return (
@@ -18,10 +18,7 @@ const Home = () => {
 			<View style={style.container}>
 				<Settings />
 				<Username />
-				<View style={style.buttonsContainer}>
-					<ButtonBig text="Book" style={style.button} />
-					<ButtonBig text="Play" style={style.button} />
-				</View>
+				<Outlet />
 			</View>
 		</LinearGradient>
 	);

@@ -1,8 +1,9 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-	container: {
-		height: '100%',
-		flexDirection: 'column',
+	button: {
+		position: 'absolute',
+		left: -20,
+		bottom: 20,
 	},
 });

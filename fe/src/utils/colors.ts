@@ -10,8 +10,10 @@ export const palette = {
 	},
 	deco: {
 		hex: '#dddd9b',
+		getRgba: (alpha?: number) => `rgba(221, 221, 152, ${alpha ?? 1})`,
 	},
 	java: {
 		hex: '#19b0b6',
+		getRgba: (alpha?: number) => `rgba(25, 176, 182, ${alpha ?? 1})`,
 	},
 };

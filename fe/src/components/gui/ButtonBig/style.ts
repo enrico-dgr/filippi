@@ -3,17 +3,16 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
 	textContainer: {
-		backgroundColor: 'rgba(255, 255, 255, 0.1)',
 		borderColor: palette.deco.hex,
 		borderWidth: 1,
 		borderRadius: 17,
-		height: 55,
-		width: 150,
+		height: 60,
+		width: 145,
 		flexDirection: 'column',
 		justifyContent: 'center',
 	},
 	textContainerPressed: {
-		backgroundColor: 'rgba(255, 255, 255, 0.5)',
+		backgroundColor: palette.java.getRgba(0.1),
 	},
 	text: {
 		color: palette.deco.hex,
@@ -21,5 +20,8 @@ export default StyleSheet.create({
 		fontSize: 20,
 		letterSpacing: 5,
 		textAlign: 'center',
+	},
+	textPressed: {
+		color: palette.affair.hex,
 	},
 });

@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "fe:start": "cd fe && yarn run start"
+  }
+}
