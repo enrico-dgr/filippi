@@ -2,7 +2,7 @@ import React, { PropsWithChildren, useMemo } from 'react';
 import style from './style';
 import { LinearGradient } from 'expo-linear-gradient';
 import { palette } from 'fe-utils/colors';
-import { ViewStyle } from 'react-native';
+import { GestureResponderEvent, Pressable, ViewStyle } from 'react-native';
 
 const Card = ({
 	style: { borderWidth, width, height, ...containerStyle },
@@ -12,6 +12,8 @@ const Card = ({
 		ViewStyle,
 		'flexDirection' | 'alignItems' | 'justifyContent'
 	>;
+	onPressIn?: (event: GestureResponderEvent) => void;
+	onPressOut?: (event: GestureResponderEvent) => void;
 	reverse?: boolean;
 	style: {
 		borderWidth: number;
@@ -59,16 +61,21 @@ const Card = ({
 				width: width + borderWidth,
 			}}
 		>
-			<LinearGradient
-				{...gradients.inner}
-				style={{
-					...(props.contentStyle ?? {}),
-					height,
-					width,
-				}}
+			<Pressable
+				onPressIn={props.onPressIn}
+				onPressOut={props.onPressOut}
 			>
-				{props.children}
-			</LinearGradient>
+				<LinearGradient
+					{...gradients.inner}
+					style={{
+						...(props.contentStyle ?? {}),
+						height,
+						width,
+					}}
+				>
+					{props.children}
+				</LinearGradient>
+			</Pressable>
 		</LinearGradient>
 	);
 };

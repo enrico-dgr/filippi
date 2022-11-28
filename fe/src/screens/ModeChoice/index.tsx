@@ -18,10 +18,14 @@ const ModeChoice = () => {
 				style={style.scrollView}
 				showsHorizontalScrollIndicator={false}
 			>
-				<GameMode />
-				<GameMode />
-				<GameMode />
-				<GameMode />
+				<GameMode
+					name="Filippemy"
+					actions={[
+						{ text: 'Create' },
+						{ text: 'Join' },
+						{ text: 'Search' },
+					]}
+				/>
 			</ScrollView>
 			<ButtonBig
 				onPressOut={onPressOutBack}

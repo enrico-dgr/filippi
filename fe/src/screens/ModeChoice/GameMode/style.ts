@@ -27,6 +27,14 @@ export default StyleSheet.create({
 		marginRight: 20,
 		marginBottom: 10,
 	},
+	cardButtonContent: {
+		flexDirection: 'column',
+		justifyContent: 'center',
+	},
+	cardButtonText: {
+		color: palette.deco.hex,
+		textAlign: 'center',
+	},
 	container: {
 		flexDirection: 'column',
 		alignItems: 'center',
