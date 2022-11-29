@@ -27,23 +27,23 @@ const Card = ({
 		() => ({
 			outer: !props.reverse
 				? {
-						colors: ['black', palette['fuchsia-pink'].hex],
+						colors: ['black', palette.affair.hex],
 						start: { x: 0.2, y: 0.3 },
 						end: { x: 1.2, y: 1.2 },
 				  }
 				: {
-						colors: [palette['fuchsia-pink'].hex, 'black'],
+						colors: [palette.affair.hex, 'black'],
 						start: { x: 0, y: 0 },
 						end: { x: 1, y: 1 },
 				  },
 			inner: !props.reverse
 				? {
-						colors: [palette['fuchsia-pink'].hex, 'black'],
+						colors: [palette.affair.hex, 'black'],
 						start: { x: 0.05, y: -0.4 },
 						end: { x: 0.9, y: 0.75 },
 				  }
 				: {
-						colors: ['black', palette['fuchsia-pink'].getRgba(0.7)],
+						colors: ['black', palette.affair.getRgba(0.7)],
 						start: { x: -0.7, y: -0.6 },
 						end: { x: 1.7, y: 1.7 },
 				  },

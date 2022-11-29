@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-native';
 import style from './style';
 import ButtonBig from 'fe-gui/ButtonBig';
 import routes from 'fe-utils/routes';
-import { ScrollView } from 'react-native';
-import GameMode from './GameMode';
+import Select from 'fe-gui/Select';
+import { Text } from 'react-native';
+import GameMode from 'fe-gui/GameMode';
 
 const ModeChoice = () => {
 	const navigate = useNavigate();
@@ -12,25 +13,21 @@ const ModeChoice = () => {
 
 	return (
 		<>
-			<ScrollView
-				horizontal
+			<Select
+				map={({ name }) => <Text>{name}</Text>}
+				items={[{ name: 'Filippemy' }]}
 				contentContainerStyle={style.scrollViewContent}
 				style={style.scrollView}
-				showsHorizontalScrollIndicator={false}
-			>
-				<GameMode
-					name="Filippemy"
-					actions={[
-						{ text: 'Create' },
-						{ text: 'Join' },
-						{ text: 'Search' },
-					]}
-				/>
-			</ScrollView>
+				showsVerticalScrollIndicator={false}
+			/>
 			<ButtonBig
 				onPressOut={onPressOutBack}
 				style={style.button}
 				text="Back"
+			/>
+			<GameMode
+				title="Filippemy"
+				description="A long description. A long description. A long description. A long description. A long description. A long description. A long description. A long description. A long description. A long description. A long description. A long description. A long description. A long description. A long description. A long description. "
 			/>
 		</>
 	);

@@ -6,13 +6,9 @@ export default StyleSheet.create({
 		left: -20,
 		bottom: 10,
 	},
-	scrollViewContent: {
-		justifyContent: 'center',
-		paddingHorizontal: 50,
-		minWidth: '100%',
-	},
+	scrollViewContent: {},
 	scrollView: {
-		position: 'absolute',
-		top: 80,
+		flex: 1,
+		width: 370,
 	},
 });

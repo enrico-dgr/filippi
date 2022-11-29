@@ -1,9 +1,11 @@
 export const palette = {
 	affair: {
 		hex: '#634080',
+    getRgba: (alpha?: number) => `rgba(99, 64, 128, ${alpha ?? 1})`,
 	},
 	black: {
 		hex: '#000000',
+    getRgba: (alpha?: number) => `rgba(0, 0, 0, ${alpha ?? 1})`,
 	},
 	'fuchsia-pink': {
 		hex: '#b037b0',
