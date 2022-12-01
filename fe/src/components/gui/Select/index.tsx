@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { ScrollView, ScrollViewProps } from 'react-native';
 
 const Select = <Item extends {}>({
@@ -6,10 +6,10 @@ const Select = <Item extends {}>({
 	items,
 	...props
 }: {
-	map: (item: Item) => JSX.Element;
+	map: (item: Item, index: number) => JSX.Element;
 	items: Item[];
 } & ScrollViewProps) => {
-	const list = useMemo(() => items.map(map), []);
+	const list = items.map(map);
 
 	return <ScrollView {...props}>{list}</ScrollView>;
 };

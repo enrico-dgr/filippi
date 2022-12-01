@@ -6,9 +6,14 @@ export default StyleSheet.create({
 		left: -20,
 		bottom: 10,
 	},
-	scrollViewContent: {},
+	scrollViewContent: {
+    flex: 1,
+		flexDirection: 'column',
+		justifyContent: 'center',
+	},
 	scrollView: {
-		flex: 1,
+		marginVertical: 60,
+		height: 300,
 		width: 370,
 	},
 });

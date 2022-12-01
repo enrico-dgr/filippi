@@ -13,6 +13,7 @@
 			"fe-screens/*": ["src/screens/*"],
 			"fe-types/*": ["src/types/*"],
 			"fe-utils/*": ["src/utils/*"],
+			"fe-redux/*": ["src/redux/*"],
 			"fe-assets/*": ["assets/*"]
 		},
 		"noUnusedLocals": true,

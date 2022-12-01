@@ -3,6 +3,8 @@ import { Pressable, Text, View, Animated, ViewStyle } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { palette } from 'fe-utils/colors';
 import style from './style';
+import { useDispatch } from 'react-redux';
+import { modeChoice } from 'fe-redux/actions';
 
 const GameMode = ({
 	description,
@@ -13,9 +15,18 @@ const GameMode = ({
 }) => {
 	const [state, setState] = useState({ rotate: false });
 	const onPressOut = () => setState({ ...state, rotate: !state.rotate });
+	const dispatch = useDispatch();
+	const onClose = () => dispatch(modeChoice.reset());
 
 	return (
 		<View style={style.container}>
+			<Pressable onPressOut={onClose} style={style.close}>
+				<Ionicons
+					color={palette.deco.hex}
+					name="close-circle-sharp"
+					size={50}
+				/>
+			</Pressable>
 			<View style={style.modal}>
 				<Header
 					title={title}
@@ -64,7 +75,7 @@ const Header = ({
 		<Pressable onPressOut={onPressOutIcon}>
 			<Ionicons
 				name={!reverse ? 'arrow-redo' : 'arrow-undo'}
-				size={30}
+				size={28}
 				color={palette.java.hex}
 			/>
 		</Pressable>
@@ -83,16 +94,17 @@ const DoubleFace = ({
 	style?: ViewStyle;
 }) => {
 	const refs = useRef(new Animated.Value(0));
+	const duration = 800;
 
 	const [state] = useState({
 		timing: Animated.timing(refs.current, {
 			toValue: 1,
-			duration: 2000,
+			duration,
 			useNativeDriver: true,
 		}),
 		timingBack: Animated.timing(refs.current, {
 			toValue: 0,
-			duration: 2000,
+			duration,
 			useNativeDriver: true,
 		}),
 		spin: refs.current.interpolate({

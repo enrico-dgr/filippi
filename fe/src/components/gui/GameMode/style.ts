@@ -14,10 +14,15 @@ export default StyleSheet.create({
 		height: '100%',
 		width: '100%',
 	},
+	close: {
+		position: 'absolute',
+		right: 16,
+		top: 10,
+	},
 	modal: {
 		flexDirection: 'column',
 		height: 280,
-		width: 470,
+		width: 450,
 	},
 	header: {
 		flexDirection: 'row',
@@ -30,9 +35,9 @@ export default StyleSheet.create({
 		...heading,
 	},
 	description: {
-    color: 'white',
-    ...paragraph
-  },
+		color: 'white',
+		...paragraph,
+	},
 	cardSide: {
 		backfaceVisibility: 'hidden',
 		position: 'absolute',

@@ -1,12 +1,18 @@
 import React from 'react';
 import Routing from 'fe-screens/Routing';
-import { useFonts } from 'expo-font';
+
+import { Provider } from 'react-redux';
+import store from 'fe-redux/store';
+import useLoaders from './src/app/useLoaders';
 
 export default function App() {
-	const [fontsLoaded] = useFonts({
-		'Bitter-Regular': require('./assets/fonts/bitter/Bitter-Regular.ttf'),
-		'Open-Sans-Regular': require('./assets/fonts/open-sans/OpenSans-Regular.ttf'),
-	});
+	const [assetsLoaded] = useLoaders();
 
-	return fontsLoaded && <Routing />;
+	return (
+		assetsLoaded && (
+			<Provider store={store}>
+				<Routing />
+			</Provider>
+		)
+	);
 }
