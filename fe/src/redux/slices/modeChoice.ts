@@ -26,5 +26,5 @@ const modeChoiceSlice = createSlice({
 	},
 });
 
-export const actions = modeChoiceSlice.actions;
-export const reducer = modeChoiceSlice.reducer;
+export const { set, reset } = modeChoiceSlice.actions;
+export default modeChoiceSlice.reducer;

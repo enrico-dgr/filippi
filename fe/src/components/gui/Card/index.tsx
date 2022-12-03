@@ -1,7 +1,7 @@
 import React, { PropsWithChildren, useMemo } from 'react';
 import style from './style';
 import { LinearGradient } from 'expo-linear-gradient';
-import { palette } from 'fe-utils/colors';
+import palette from 'fe-utils/palette';
 import { GestureResponderEvent, Pressable, ViewStyle } from 'react-native';
 
 const Card = ({

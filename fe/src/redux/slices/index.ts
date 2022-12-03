@@ -1,5 +1,7 @@
-import * as modeChoice from './modeChoice';
+import modeChoice from './modeChoice';
+import toast from './toast';
 
 export const reducers = {
-	modeChoice: modeChoice.reducer,
+	modeChoice,
+	toast,
 };

@@ -1,5 +1,5 @@
-import { palette } from 'fe-utils/colors';
-import { heading } from 'fe-utils/baseStyle';
+import palette from 'fe-utils/palette';
+import baseStyle from 'fe-utils/baseStyle';
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
@@ -23,6 +23,6 @@ export default StyleSheet.create({
 	},
 	text: {
 		color: palette.deco.hex,
-		...heading,
+		...baseStyle.heading,
 	},
 });

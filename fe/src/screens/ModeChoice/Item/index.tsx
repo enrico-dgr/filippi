@@ -1,4 +1,6 @@
-import { modeChoice } from 'fe-redux/actions';
+import * as modeChoice from 'fe-redux/slices/modeChoice';
+import * as toast from 'fe-redux/slices/toast';
+import * as games from 'fe-services/games';
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { useDispatch } from 'react-redux';
@@ -12,7 +14,17 @@ const Item = ({ name }: Props, i: number) => {
 	const dispatch = useDispatch();
 
 	const onPressOut = () =>
-		dispatch(modeChoice.set({ name, description: '' }));
+		games
+			.getByName({ name })
+			.then((res) =>
+				res.data !== undefined
+					? modeChoice.set(res.data)
+					: toast.set({
+							type: 'error',
+							message: res.errorMessage,
+					  })
+			)
+			.then(dispatch);
 
 	return (
 		<Pressable

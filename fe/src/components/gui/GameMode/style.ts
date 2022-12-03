@@ -1,5 +1,5 @@
-import { heading, paragraph } from 'fe-utils/baseStyle';
-import { palette } from 'fe-utils/colors';
+import baseStyle from 'fe-utils/baseStyle';
+import palette from 'fe-utils/palette';
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
@@ -32,11 +32,26 @@ export default StyleSheet.create({
 	},
 	headerText: {
 		color: palette.deco.hex,
-		...heading,
+		...baseStyle.heading,
 	},
 	description: {
 		color: 'white',
-		...paragraph,
+		...baseStyle.paragraph,
+	},
+	buttonContainer: {
+		marginBottom: 13,
+	},
+	button: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'flex-start',
+		paddingLeft: 20,
+		height: 50,
+		width: '100%',
+	},
+	buttonText: {
+		color: 'white',
+		...baseStyle.heading,
 	},
 	cardSide: {
 		backfaceVisibility: 'hidden',

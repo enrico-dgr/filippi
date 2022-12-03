@@ -2,7 +2,7 @@ import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { View } from 'react-native';
 import style from './style';
-import { palette } from 'fe-utils/colors';
+import palette from 'fe-utils/palette';
 
 const Settings = () => {
 	return (

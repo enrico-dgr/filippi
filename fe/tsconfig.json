@@ -11,13 +11,19 @@
 			"fe-gui/*": ["src/components/gui/*"],
 			"fe-systems/*": ["src/components/systems/*"],
 			"fe-screens/*": ["src/screens/*"],
+			"fe-services/*": ["src/services/*"],
 			"fe-types/*": ["src/types/*"],
 			"fe-utils/*": ["src/utils/*"],
 			"fe-redux/*": ["src/redux/*"],
 			"fe-assets/*": ["assets/*"]
 		},
+		"strict": true,
 		"noUnusedLocals": true,
-		"noUnusedParameters": true
+		"noUnusedParameters": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true
 	},
 	"extends": "expo/tsconfig.base"
 }

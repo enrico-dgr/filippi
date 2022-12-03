@@ -1,10 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Pressable, Text, View, Animated, ViewStyle } from 'react-native';
+import {
+	Pressable,
+	Text,
+	View,
+	Animated,
+	ViewStyle,
+	PressableProps,
+} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { palette } from 'fe-utils/colors';
+import palette from 'fe-utils/palette';
 import style from './style';
 import { useDispatch } from 'react-redux';
-import { modeChoice } from 'fe-redux/actions';
+import { reset } from 'fe-redux/slices/modeChoice';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const GameMode = ({
 	description,
@@ -16,7 +24,7 @@ const GameMode = ({
 	const [state, setState] = useState({ rotate: false });
 	const onPressOut = () => setState({ ...state, rotate: !state.rotate });
 	const dispatch = useDispatch();
-	const onClose = () => dispatch(modeChoice.reset());
+	const onClose = () => dispatch(reset());
 
 	return (
 		<View style={style.container}>
@@ -34,15 +42,7 @@ const GameMode = ({
 					reverseIcon={state.rotate}
 				/>
 				<DoubleFace
-					firstFace={
-						<View
-							style={{
-								backgroundColor: 'red',
-								height: '100%',
-								width: '100%',
-							}}
-						></View>
-					}
+					firstFace={<FirstFace />}
 					secondFace={
 						<View
 							style={{
@@ -81,6 +81,39 @@ const Header = ({
 		</Pressable>
 	</View>
 );
+
+const Button = ({
+	onPressOut,
+	text,
+}: {
+	onPressOut?: PressableProps['onPressOut'];
+	style?: ViewStyle;
+	text: string;
+}) => (
+	<LinearGradient
+		colors={[
+			palette['fuchsia-pink'].getRgba(0.8),
+			palette['fuchsia-pink'].getRgba(0.2),
+		]}
+		start={{ x: 0, y: 0.5 }}
+		end={{ x: 1, y: 0.5 }}
+		style={style.buttonContainer}
+	>
+		<Pressable onPressOut={onPressOut} style={style.button}>
+			<Text style={style.buttonText}>{text}</Text>
+		</Pressable>
+	</LinearGradient>
+);
+
+const FirstFace = () => {
+	return (
+		<>
+			<Button text="Search" />
+			<Button text="Create" />
+			<Button text="Join" />
+		</>
+	);
+};
 
 const DoubleFace = ({
 	firstFace,
