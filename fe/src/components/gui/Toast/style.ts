@@ -13,14 +13,15 @@ export default StyleSheet.create({
 	},
 	modalBackground: {
 		...baseStyle.modalWrapper,
+		backgroundColor: palette.black.hex,
 	},
-	container: {
+	modal: {
 		backgroundColor: 'black',
 		paddingHorizontal: 30,
 		paddingVertical: 40,
 		width: '55%',
 	},
-	containerOnError: {
+	modalOnError: {
 		backgroundColor: palette['tall-poppy'].hex,
 	},
 	text: {

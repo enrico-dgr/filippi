@@ -1,13 +1,15 @@
 type Color = {
 	hex: string;
+	rgb: string;
 	r: number;
 	g: number;
 	b: number;
 	getRgba: (alpha: number) => string;
 };
 
-const defaults: Pick<Color, 'getRgba' | 'hex'> = {
+const defaults: Pick<Color, 'getRgba' | 'hex' | 'rgb'> = {
 	hex: '#000000',
+	rgb: 'rgb(0, 0, 0)',
 	getRgba: () => 'rgba(0, 0, 0, 1)',
 };
 
@@ -34,6 +36,8 @@ const colorHandler = {
 			res = function (alpha: number) {
 				return `rgba(${obj.r}, ${obj.g}, ${obj.b}, ${alpha ?? 1})`;
 			};
+		} else if (prop === 'rgb') {
+			res = `rgb(${obj.r},${obj.g},${obj.b})`;
 		} else if (prop === 'hex') {
 			res = '#' + primToHex(obj.r) + primToHex(obj.g) + primToHex(obj.b);
 		} else if (prop in obj) {

@@ -28,6 +28,10 @@ const Toast = () => {
 				duration,
 				useNativeDriver: true,
 			}),
+			opacity: valueAnim.interpolate({
+				inputRange: [0, 1],
+				outputRange: [0, 0.7],
+			}),
 			translateY: valueAnim.interpolate({
 				inputRange: [0, 0.7, 1],
 				outputRange: [-800, 40, 0],
@@ -60,21 +64,36 @@ const Toast = () => {
 		setState((s) => (s.is === 'shown' ? { ...s, is: 'animOut' } : s));
 	}, []);
 
+	const Background = () => (
+		<Animated.View
+			style={{ ...style.modalBackground, opacity: anims.opacity }}
+		>
+			<Pressable onPressOut={resetToast} style={{ flex: 1 }} />
+		</Animated.View>
+	);
+
+	const Modal = () => (
+		<Animated.View
+			style={{
+				transform: [{ translateY: anims.translateY }],
+				zIndex: style.modalBackground.zIndex + 1,
+			}}
+		>
+			<Pressable
+				onPressOut={resetToast}
+				style={getModalStyle(toastData.type)}
+			>
+				<Text style={getTextStyle(toastData.type)}>
+					{toastData.message}
+				</Text>
+			</Pressable>
+		</Animated.View>
+	);
+
 	return (
 		<View style={getWrapperStyle(toastData.type)}>
-			<Pressable onPressOut={resetToast} style={style.modalBackground} />
-			<Animated.View
-				style={{ transform: [{ translateY: anims.translateY }] }}
-			>
-				<Pressable
-					onPressOut={resetToast}
-					style={getContainerStyle(toastData.type)}
-				>
-					<Text style={getTextStyle(toastData.type)}>
-						{toastData.message}
-					</Text>
-				</Pressable>
-			</Animated.View>
+			<Background />
+			<Modal />
 		</View>
 	);
 };
@@ -91,16 +110,16 @@ const getWrapperStyle = (type: ToastState['type']) => {
 	return Object.assign({}, style.modalWrapper, additionalStyle);
 };
 
-const getContainerStyle = (type: ToastState['type']) => {
+const getModalStyle = (type: ToastState['type']) => {
 	let styleOnType = {};
 
 	switch (type) {
 		case 'error':
-			styleOnType = style.containerOnError;
+			styleOnType = style.modalOnError;
 			break;
 	}
 
-	return { ...style.container, ...styleOnType };
+	return { ...style.modal, ...styleOnType };
 };
 
 const getTextStyle = (type: ToastState['type']) => {
