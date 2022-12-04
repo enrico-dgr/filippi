@@ -15,5 +15,6 @@ export default StyleSheet.create({
 		marginVertical: 60,
 		height: 300,
 		width: 370,
+    zIndex: 0
 	},
 });

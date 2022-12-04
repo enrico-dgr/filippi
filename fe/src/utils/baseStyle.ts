@@ -16,4 +16,13 @@ export default StyleSheet.create({
 		fontSize: 20,
 		letterSpacing: 1,
 	},
+	modalWrapper: {
+		flexDirection: 'column',
+		position: 'absolute',
+		left: 0,
+		right: 0,
+		height: '100%',
+		width: '100%',
+    zIndex: 20
+	},
 });
