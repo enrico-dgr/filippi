@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
 	Pressable,
 	Text,
@@ -6,6 +6,7 @@ import {
 	Animated,
 	ViewStyle,
 	PressableProps,
+	GestureResponderEvent,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import palette from 'fe-utils/palette';
@@ -13,6 +14,8 @@ import style from './style';
 import { useDispatch } from 'react-redux';
 import { reset } from 'fe-redux/slices/modeChoice';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useNavigate } from 'react-router-native';
+import routes from 'fe-utils/routes';
 
 const GameMode = ({
 	description,
@@ -42,17 +45,8 @@ const GameMode = ({
 					reverseIcon={state.rotate}
 				/>
 				<DoubleFace
-					firstFace={<FirstFace />}
-					secondFace={
-						<View
-							style={{
-								height: '100%',
-								width: '100%',
-							}}
-						>
-							<Text style={style.description}>{description}</Text>
-						</View>
-					}
+					firstFace={<FirstFace name={title} />}
+					secondFace={<SecondFace description={description} />}
 					rotate={state.rotate}
 					style={{ flex: 1 }}
 				/>
@@ -89,31 +83,52 @@ const Button = ({
 	onPressOut?: PressableProps['onPressOut'];
 	style?: ViewStyle;
 	text: string;
-}) => (
-	<LinearGradient
-		colors={[
-			palette['fuchsia-pink'].getRgba(0.8),
-			palette['fuchsia-pink'].getRgba(0.2),
-		]}
-		start={{ x: 0, y: 0.5 }}
-		end={{ x: 1, y: 0.5 }}
-		style={style.buttonContainer}
-	>
-		<Pressable onPressOut={onPressOut} style={style.button}>
-			<Text style={style.buttonText}>{text}</Text>
-		</Pressable>
-	</LinearGradient>
-);
+}) => {
+	const onPressOut_ = useCallback(
+		(event: GestureResponderEvent) => {
+			onPressOut && onPressOut(event);
+		},
+		[onPressOut]
+	);
 
-const FirstFace = () => {
+	return (
+		<LinearGradient
+			colors={[
+				palette['fuchsia-pink'].getRgba(0.8),
+				palette['fuchsia-pink'].getRgba(0.2),
+			]}
+			start={{ x: 0, y: 0.5 }}
+			end={{ x: 1, y: 0.5 }}
+			style={style.buttonContainer}
+		>
+			<Pressable onPressOut={onPressOut_} style={style.button}>
+				<Text style={style.buttonText}>{text}</Text>
+			</Pressable>
+		</LinearGradient>
+	);
+};
+
+const FirstFace = ({ name }: { name: string }) => {
+	const navigate = useNavigate();
+	const goToGame = () =>
+		navigate(routes.Game, {
+			state: {
+				mode: name,
+			},
+		});
+
 	return (
 		<>
 			<Button text="Search" />
-			<Button text="Create" />
+			<Button onPressOut={goToGame} text="Create" />
 			<Button text="Join" />
 		</>
 	);
 };
+
+const SecondFace = ({ description }: { description: string }): JSX.Element => (
+	<Text style={style.description}>{description}</Text>
+);
 
 const DoubleFace = ({
 	firstFace,
@@ -165,6 +180,7 @@ const DoubleFace = ({
 			<Animated.View
 				style={{
 					...style.cardSide,
+					zIndex: rotate ? 1 : 2,
 					transform: [{ rotateY: state.spin }, { perspective: 1000 }],
 				}}
 			>
@@ -173,6 +189,7 @@ const DoubleFace = ({
 			<Animated.View
 				style={{
 					...style.cardSide,
+					zIndex: rotate ? 2 : 1,
 					transform: [
 						{ rotateY: state.spin2 },
 						{ perspective: 1000 },

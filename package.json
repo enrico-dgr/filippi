@@ -1,5 +1,9 @@
 {
   "scripts": {
     "fe:start": "cd fe && yarn run start"
-  }
+  },
+  "private": true,
+  "name": "filippi",
+  "version": "1.0.0",
+  "workspaces": ["common", "fe"]
 }

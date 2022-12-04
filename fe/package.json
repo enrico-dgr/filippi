@@ -1,9 +1,12 @@
 {
 	"dependencies": {
 		"@reduxjs/toolkit": "^1.9.1",
+		"common": "*",
 		"expo-font": "~11.0.1",
+		"fp-ts": "^2.13.1",
 		"react-redux": "^8.0.5",
-		"three": "^0.145.0"
+		"three": "^0.147.0",
+		"three-stdlib": "^2.20.2"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.19.3",
@@ -33,5 +36,5 @@
 	},
 	"version": "1.0.0",
 	"private": true,
-	"name": "filippi"
+	"name": "fe"
 }

@@ -27,7 +27,7 @@ export const getByName = async ({ name }: { name: string }) => {
 	if (!game) {
 		response.errorMessage = `No game found with name "${name}".`;
 	} else {
-		// response.data = game;
+		response.data = game;
 	}
 
 	return response;

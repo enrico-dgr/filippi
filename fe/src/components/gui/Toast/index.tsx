@@ -20,7 +20,7 @@ const Toast = () => {
 		() => ({
 			timingIn: Animated.timing(valueAnim, {
 				toValue: 1,
-				duration,
+				duration: duration - 100,
 				useNativeDriver: true,
 			}),
 			timingOut: Animated.timing(valueAnim, {

@@ -1,5 +1,7 @@
 const generateAlias = require('./scripts/generateBabelAlias');
 
+const alias = generateAlias();
+
 module.exports = function (api) {
 	api.cache(true);
 	return {
@@ -9,7 +11,7 @@ module.exports = function (api) {
 				'module-resolver',
 				{
 					root: ['.'],
-					alias: generateAlias(),
+					alias,
 				},
 			],
 		],
