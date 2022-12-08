@@ -1,7 +1,6 @@
 {
 	"dependencies": {
 		"@reduxjs/toolkit": "^1.9.1",
-		"common": "*",
 		"expo-font": "~11.0.1",
 		"fp-ts": "^2.13.1",
 		"react-redux": "^8.0.5",

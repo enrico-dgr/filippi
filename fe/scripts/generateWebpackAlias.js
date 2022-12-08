@@ -20,8 +20,8 @@ module.exports = function () {
 
       // ["src/.../controllers/*"] => "absolute/path/to/controllers"
 			alias[key] = path.resolve(
-				__dirname, // "absolute/path/to/repo/scripts"
-				'..', // go back one dir to repo base dir
+				__dirname, // "absolute/path/to/project/scripts"
+				'..', // go back one dir to project base dir
 				paths[newAlias][0].replace('/*', '') // "src/.../controllers"
 			);
 		}

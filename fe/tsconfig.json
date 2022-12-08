@@ -2,11 +2,11 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
-      "c-assets/*": ["../common/assets/*"],
-			"c-builders/*": ["../common/builders/*"],
-			"c-entities/*": ["../common/entities/*"],
-			"c-systems/*": ["../common/systems/*"],
-			"c-types/*": ["../common/types/*"],
+      "c-assets/*": ["common/assets/*"],
+			"c-builders/*": ["common/builders/*"],
+			"c-entities/*": ["common/entities/*"],
+			"c-systems/*": ["common/systems/*"],
+			"c-types/*": ["common/types/*"],
 			"fe-controllers/*": ["src/components/controllers/*"],
 			"fe-entities/*": ["src/components/entities/*"],
 			"fe-gui/*": ["src/components/gui/*"],

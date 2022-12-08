@@ -1,11 +1,12 @@
 const createExpoWebpackConfigAsync = require('@expo/webpack-config');
 const generateAlias = require('./scripts/generateWebpackAlias');
 
-
 module.exports = async function (env, argv) {
 	const config = await createExpoWebpackConfigAsync(env, argv);
 
-	Object.assign(config.resolve.alias, generateAlias());
+	const alias = generateAlias();
+
+	Object.assign(config.resolve.alias, alias);
 
 	return config;
 };

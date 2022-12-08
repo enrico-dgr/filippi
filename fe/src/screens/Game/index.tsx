@@ -84,6 +84,7 @@ const Game = () => {
 				<Camera position={new Vector3(0, 0, 5)} />
 				<Box position={[1.2, 0, 0]} />
 				<Box position={[-1.2, 0, 0]} />
+        <Character />
         {/* @todo Player needs "document" variable to be removed */}
 				{/* <Player /> */}
 			</Canvas>
