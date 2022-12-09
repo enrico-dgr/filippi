@@ -1,5 +1,5 @@
 import { AnimationMixer, AnimationAction } from 'three';
-import { GLTF, GLTFLoader, SkeletonUtils } from 'three-stdlib';
+import { GLTF, GLTFLoader } from 'three-stdlib';
 
 const chc: Record<string, GLTF> = {};
 
@@ -12,10 +12,9 @@ export const gltf = async <Names extends string>(url: string) => {
 		model = await new GLTFLoader().loadAsync(url);
 		chc[url] = model;
 	}
-
-	const newScene = SkeletonUtils.clone(model.scene);
-	const mixer = new AnimationMixer(newScene);
-
+  
+	const mixer = new AnimationMixer(model.scene);
+  
 	const actions: Partial<Record<Names, AnimationAction>> = {};
 
 	model.animations.forEach((a) => {
@@ -23,7 +22,7 @@ export const gltf = async <Names extends string>(url: string) => {
 	});
 
 	return {
-		object: newScene,
+		model: model,
 		actions: actions as Record<Names, AnimationAction>,
 		mixer,
 	};

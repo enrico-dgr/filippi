@@ -1,12 +1,13 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Mesh, Vector3 } from 'three';
+import { Mesh, Object3D, Vector3 } from 'three';
 import { useNavigate } from 'react-router-native';
 import palette from 'fe-utils/palette';
 import { Pressable } from 'react-native';
 import Camera from 'fe-entities/Camera';
 import Character from 'fe-entities/Character';
 import Player from 'fe-entities/Player';
+import Fps from 'fe-gui/Fps';
 
 function Box(props: { position: [number, number, number] }) {
 	// This reference will give us direct access to the mesh
@@ -42,9 +43,35 @@ function Box(props: { position: [number, number, number] }) {
 }
 
 const Game = () => {
+	const [state, setState] = useState({
+		goHome: false,
+		showSecond: false,
+	});
+	const ref = useRef<HTMLCanvasElement>();
+	const data = useMemo(
+		() => ({
+			scene: undefined as Object3D | undefined,
+		}),
+		[]
+	);
 	const navigate = useNavigate();
-	const goHome = () => navigate('/');
-	// navigate('/');
+	const goHome = () => setState({ ...state, goHome: true });
+
+	useEffect(() => {
+		if (!state.showSecond) {
+			setTimeout(
+				() =>
+					setState((s) =>
+						s.showSecond ? s : { ...s, showSecond: true }
+					),
+				1500
+			);
+		}
+
+		if (state.goHome && data.scene) {
+			navigate('/');
+		}
+	}, [state.goHome]);
 
 	return (
 		<>
@@ -61,10 +88,13 @@ const Game = () => {
 				}}
 			/>
 			<Canvas
+				ref={ref as any}
 				style={{ backgroundColor: palette.black.hex }}
 				onCreated={(state) => {
-          // fix pixelStorei not supported params
-          // on loading ".glb"
+					data.scene = state.scene;
+
+					// fix pixelStorei not supported params
+					// on loading ".glb"
 					const _gl = state.gl.getContext();
 					const pixelStorei = _gl.pixelStorei.bind(_gl);
 					_gl.pixelStorei = function (...args) {
@@ -74,18 +104,19 @@ const Game = () => {
 								return pixelStorei(...args);
 						}
 					};
-
-          _gl.getExtension('EXT_color_buffer_float')
-          console.log(state.gl.info)
 				}}
 			>
+				<Fps />
 				<ambientLight />
 				<pointLight position={[10, 10, 10]} />
 				<Camera position={new Vector3(0, 0, 5)} />
 				<Box position={[1.2, 0, 0]} />
 				<Box position={[-1.2, 0, 0]} />
-        <Character />
-        {/* @todo Player needs "document" variable to be removed */}
+				<Character />
+				<mesh position={[3, 0, 0]}>
+					{state.showSecond && <Character />}
+				</mesh>
+				{/* @todo Player needs "document" variable to be removed */}
 				{/* <Player /> */}
 			</Canvas>
 		</>

@@ -9,11 +9,16 @@ const useEntity = <ThreeData extends ThreeDataPrimitive, State extends {}>({
 	children,
 	inputSystems = [],
 }: {
-	entityPromise: (clock: Clock) => Promise<Entity<ThreeData, State>>;
+	entityPromise: (
+		clock: Clock
+	) => Promise<Entity<ThreeData, State> | undefined>;
 	children?: React.ReactNode;
 	inputSystems?: InputSystem<State>[];
 }) => {
-	const clock = useThree((s) => s.clock);
+	const { clock, scene } = useThree((s) => ({
+		clock: s.clock,
+		scene: s.scene,
+	}));
 
 	const [entity, setEntity] = useState<Entity<ThreeData, State>>();
 	const update = useMemo(() => (entity ? entity.update : () => {}), [entity]);
@@ -24,9 +29,21 @@ const useEntity = <ThreeData extends ThreeDataPrimitive, State extends {}>({
 	);
 
 	useEffect(() => {
-		entityPromise(clock).then((entity_) => {
-			setEntity(entity_);
-		});
+		entityPromise(clock)
+			.then((entity_) => {
+				setEntity(entity_);
+			})
+			.catch((r) => {
+				console.log('useEntity Error: ', r);
+			});
+
+		return () => {
+			// entity &&
+			// 	scene.remove(entity.threeData.object) &&
+			// 	console.log('removed');
+			// console.log(entity?.threeData.object);
+			// console.log('unmount');
+		};
 	}, []);
 
 	useFrame((_, delta) => {

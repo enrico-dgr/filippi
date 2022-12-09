@@ -1,7 +1,7 @@
 import model from 'c-assets/models3d/character.glb';
 import BasicMovement from 'c-systems/BasicMovement';
 import BasicRotation from 'c-systems/BasicRotation';
-import { Group, AnimationMixer, AnimationAction } from 'three';
+import { AnimationMixer, AnimationAction, Object3D } from 'three';
 import { AnimationName } from 'c-types/entities';
 import { buildEntity } from 'c-builders/entity';
 import { gltf } from 'c-builders/threeData';
@@ -21,27 +21,28 @@ export type State = {
 export type ThreeData = {
 	actions: Record<AnimationName, AnimationAction>;
 	mixer: AnimationMixer;
-	object: Group;
+	object: Object3D;
 };
 
 export const entity = () =>
-	gltf<AnimationName>(model).then((tD) =>
-		buildEntity<State, ThreeData>({
-			threeData: {
-				actions: tD.actions,
-				mixer: tD.mixer,
-				object: tD.model.scene,
-			},
-			state: {
-				action: {
-					forward: false,
-					backward: false,
-					left: false,
-					right: false,
-					horizontalTurn: 0,
-					verticalTurn: 0,
+	gltf<AnimationName>(model)
+		.then((threeData) =>
+			buildEntity<State, ThreeData>({
+				threeData,
+				state: {
+					action: {
+						forward: false,
+						backward: false,
+						left: false,
+						right: false,
+						horizontalTurn: 0,
+						verticalTurn: 0,
+					},
 				},
-			},
-			systemBuilders: [Animation, BasicMovement, BasicRotation],
-		})
-	);
+				systemBuilders: [Animation, BasicMovement, BasicRotation],
+			})
+		)
+		.catch((r) => {
+			console.log('Gltf character entity Error: ', r);
+			return undefined;
+		});

@@ -4,6 +4,9 @@ import Routing from 'fe-screens/Routing';
 import { Provider } from 'react-redux';
 import store from 'fe-redux/store';
 import useLoaders from './src/app/useLoaders';
+import { ignoreLogs } from './src/app/logBox';
+
+ignoreLogs();
 
 export default function App() {
 	const [assetsLoaded] = useLoaders();
