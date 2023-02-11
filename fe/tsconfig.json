@@ -16,6 +16,7 @@
 			"fe-hooks/*": ["src/hooks/*"],
 			"fe-types/*": ["src/types/*"],
 			"fe-utils/*": ["src/utils/*"],
+			"fe-events": ["src/utils/events.ts"],
 			"fe-redux/*": ["src/redux/*"],
 			"fe-assets/*": ["assets/*"]
 		},

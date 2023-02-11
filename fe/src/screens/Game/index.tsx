@@ -7,7 +7,8 @@ import { Pressable } from 'react-native';
 import Camera from 'fe-entities/Camera';
 import Character from 'fe-entities/Character';
 import Player from 'fe-entities/Player';
-import Fps from 'fe-gui/Fps';
+import Fps from 'fe-entities/Fps';
+import Stats from 'fe-gui/Stats';
 
 function Box(props: { position: [number, number, number] }) {
 	// This reference will give us direct access to the mesh
@@ -75,6 +76,7 @@ const Game = () => {
 
 	return (
 		<>
+			<Stats />
 			<Pressable
 				onPressOut={goHome}
 				style={{
