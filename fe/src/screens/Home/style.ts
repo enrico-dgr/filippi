@@ -6,4 +6,12 @@ export default StyleSheet.create({
 		flexDirection: 'column',
 		alignItems: 'center',
 	},
+	chat: {
+		marginRight: 60,
+	},
+	header: {
+		position: 'absolute',
+		left: 0,
+		top: 15,
+	},
 });

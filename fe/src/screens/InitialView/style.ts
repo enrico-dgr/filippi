@@ -9,5 +9,6 @@ export default StyleSheet.create({
 	},
 	button: {
 		marginTop: 10,
+    zIndex: 1
 	},
 });

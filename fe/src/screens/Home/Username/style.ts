@@ -7,8 +7,5 @@ export default StyleSheet.create({
 		fontFamily: 'Bitter-Regular',
 		fontSize: 20,
 		letterSpacing: 3,
-		position: 'absolute',
-		left: 25,
-		top: 22,
 	},
 });

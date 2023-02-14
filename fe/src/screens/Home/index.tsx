@@ -7,6 +7,9 @@ import palette from 'fe-utils/palette';
 import Username from './Username';
 import { Outlet } from 'react-router-native';
 import Toast from 'fe-gui/Toast';
+import Chat from 'fe-gui/Chat';
+import Header from 'fe-gui/containers/Header';
+import ChatOpenButton from 'fe-gui/blocks/ChatOpenButton';
 
 const Home = () => {
 	return (
@@ -17,8 +20,17 @@ const Home = () => {
 			style={{ height: '100%' }}
 		>
 			<View style={style.container}>
-				<Username />
-				<Settings />
+				<Header
+					left={<Username />}
+					right={
+						<>
+							<ChatOpenButton style={style.chat} />
+							<Settings />
+						</>
+					}
+					style={style.header}
+				/>
+				<Chat />
 				<Toast />
 				<Outlet />
 			</View>
